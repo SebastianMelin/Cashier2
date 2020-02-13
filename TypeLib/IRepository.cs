@@ -32,7 +32,10 @@ namespace TypeLib
         Task<IEnumerable<Pasta>> GetPastas();
         Task<IEnumerable<PizzaRecipe>> GetPizzas();
         Task<IEnumerable<Sallad>> GetSallads();
+        Task<IEnumerable<Order>> GetOrdersMakingtwo();
         Task<Order> DeleteOrders(Order order);
         Task<IEnumerable<Order>> GetOrdersMaking();
+        Task<Order> AddNewOrder(Order Order);
+        Task<IEnumerable<Order>> GetOrders();
     }
 }

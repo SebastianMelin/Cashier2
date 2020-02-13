@@ -1,18 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
     <PackageReference Include="Dapper" Version="2.0.30" />
-    <PackageReference Include="Npgsql" Version="4.1.3" />
-    <PackageReference Include="System.Configuration.ConfigurationManager" Version="4.7.0" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.0" />
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\MsRepository\MsRepository.csproj" />
     <ProjectReference Include="..\TypeLib\TypeLib.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="DB_A53DDD_topdogDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+    </None>
   </ItemGroup>
 
 </Project>
