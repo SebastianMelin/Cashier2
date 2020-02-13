@@ -88,6 +88,10 @@ namespace MsRepository
         {
             return (await Connection.QueryAsync<PizzaRecipe>("GetPizzas", null, commandType: CommandType.StoredProcedure));
         }
+        public async Task<IEnumerable<PizzaRecipe>> GetCurrentpizzas()
+        {
+            return (await Connection.QueryAsync<PizzaRecipe>("GetCurrentpizzas", null, commandType: CommandType.StoredProcedure));
+        }
         #endregion
 
         #region Pastas
@@ -204,6 +208,10 @@ public class PgsRepository : IDisposable, IRepository
     public async Task<IEnumerable<Order>> GetOrders()
     {
         return (await Connection.QueryAsync<Order>("GetOrders", null, commandType: CommandType.StoredProcedure));
+    }
+    public async Task<IEnumerable<PizzaRecipe>> GetCurrentpizzas()
+    {
+        return (await Connection.QueryAsync<PizzaRecipe>("GetCurrentpizzas", null, commandType: CommandType.StoredProcedure));
     }
     #endregion
 

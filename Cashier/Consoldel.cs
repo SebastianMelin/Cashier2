@@ -25,8 +25,7 @@ namespace Cashier
             _repo = new Repository();
             int CurrentPos = 0;
             // Läs in alla aktuella ordrar
-            
-            
+
             while (true)
             {
                 Console.Clear();
@@ -34,6 +33,7 @@ namespace Cashier
                 Console.WriteLine("\n\tOrdrar som ska hämtas\n");
                                
                 var Orders = _repo.GetOrdersMaking().Result.AsList();
+                 
                 ///<summary>
                 // Skriv ut alla ordrar
                 ///</summary>
@@ -61,7 +61,7 @@ namespace Cashier
                             if (Orders.Count > 0)
                             {
                                 _repo.DeleteOrders(Orders[CurrentPos]);
-                                Orders.RemoveAt(CurrentPos);
+                                Orders.RemoveAt(CurrentPos);                               
                             }                                                        
                         }
                         break;

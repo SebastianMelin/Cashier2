@@ -33,10 +33,11 @@ namespace TypeLib
         Task<IEnumerable<PizzaRecipe>> GetPizzas();
         Task<IEnumerable<Sallad>> GetSallads();
         Task<IEnumerable<Order>> GetOrdersMakingtwo();
-        Task<Order> DeleteOrders(Order order);
+        Task<Order> DeleteOrders(Order Order);
         Task<IEnumerable<Order>> GetOrdersMaking();
         Task<Order> AddNewOrder(Order Order);
         Task<IEnumerable<Order>> GetOrders();
         Task<PizzaRecipe> AddNewPizzaContent(PizzaRecipe pizza);
+        Task<IEnumerable<PizzaRecipe>> GetCurrentpizzas();
     }
 }
