@@ -65,9 +65,13 @@ namespace MsRepository
         {
             return (await Connection.QueryAsync<Order>("GetOrders", null, commandType: CommandType.StoredProcedure));
         }
-#endregion
+        #endregion
 
         #region Pizzas
+        public async Task<PizzaRecipe> AddNewPizzaContent(PizzaRecipe pizza)
+        {
+            return (await Connection.QueryAsync<PizzaRecipe>("AddNewPizzaContent", new { Ingredients_id = pizza.Ingredient_id, Pizza_id = pizza.Pizza_id }, commandType: CommandType.StoredProcedure)).First();
+        }
         public async Task<PizzaRecipe> AddPizza(PizzaRecipe pizza)
         {
             return (await Connection.QueryAsync<PizzaRecipe>("AddPizzas", new { Name = pizza.Name, Price = pizza.Price }, commandType: CommandType.StoredProcedure)).First();
@@ -191,11 +195,11 @@ public class PgsRepository : IDisposable, IRepository
     }
     public async Task<Order> DeleteOrders(Order Order)
     {
-        return (await Connection.QueryAsync<Order>("DeleteOrders", new { ID = Order.ID }, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+        return (await Connection.QueryAsync<Order>("DeleteOrders", new { _ID = Order.ID }, commandType: CommandType.StoredProcedure)).FirstOrDefault();
     }
     public async Task<Order> AddNewOrder(Order Order)
     {
-        return (await Connection.QueryAsync<Order>("AddNewOrder", new { Order_status = Order.Order_status }, commandType: CommandType.StoredProcedure)).FirstOrDefault();
+        return (await Connection.QueryAsync<Order>("AddNewOrder", new { _Order_status = Order.Order_status }, commandType: CommandType.StoredProcedure)).FirstOrDefault();
     }
     public async Task<IEnumerable<Order>> GetOrders()
     {
@@ -238,6 +242,10 @@ public class PgsRepository : IDisposable, IRepository
     public async Task<IEnumerable<PizzaRecipe>> GetPizzas()
     {
         return (await Connection.QueryAsync<PizzaRecipe>("GetPizzas", null, commandType: CommandType.StoredProcedure));
+    }
+    public async Task<PizzaRecipe> AddNewPizzaContent(PizzaRecipe pizza)
+    {
+        return (await Connection.QueryAsync<PizzaRecipe>("AddNewPizzaContent", new { _Ingredients_id = pizza.Ingredient_id, _Pizza_id = pizza.Pizza_id }, commandType: CommandType.StoredProcedure)).First();
     }
     #endregion
 

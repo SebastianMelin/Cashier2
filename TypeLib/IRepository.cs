@@ -37,5 +37,6 @@ namespace TypeLib
         Task<IEnumerable<Order>> GetOrdersMaking();
         Task<Order> AddNewOrder(Order Order);
         Task<IEnumerable<Order>> GetOrders();
+        Task<PizzaRecipe> AddNewPizzaContent(PizzaRecipe pizza);
     }
 }
